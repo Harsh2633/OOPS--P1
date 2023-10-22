@@ -8,26 +8,25 @@
 #include <iomanip>
 #include <windows.h>
 
-using namespace std;
 
 void menu();
 class manageMenu
 {
 protected:
-    string username; // hide admin name
+    std::string username; // hide admin name
 
 public:
     manageMenu()
     {
         system("color 0A");
-        cout << endl;
-        cout << ".........................................................................................................." << endl;
-        cout << "::::::::::::::::::::::::::::::::::::: || TRAVEL MANAGEMENT SYSTEM || :::::::::::::::::::::::::::::::::::::" << endl;
-        cout << "........................................ ------------------------ ........................................" << endl
-             << endl;
-        cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-        cout << "                  Enter your Name to Continue as an Admin:                      " << endl;
-        cin >> username;
+        std::cout << std::endl;
+        std::cout << ".........................................................................................................." << std::endl;
+        std::cout << "::::::::::::::::::::::::::::::::::::: || TRAVEL MANAGEMENT SYSTEM || :::::::::::::::::::::::::::::::::::::" << std::endl;
+        std::cout << "........................................ ------------------------ ........................................" << std::endl
+             << std::endl;
+        std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+        std::cout << "                  Enter your Name to Continue as an Admin:                      " << std::endl;
+        std::cin >> username;
 
         system("cls");
         menu();
@@ -38,45 +37,45 @@ public:
 class Customers
 {
 public:
-    string name, gender, address;
+    std::string name, gender, address;
     int age, contact;
     static int cusID;
     char all[999];
 
     void getdetails()
     {
-        ofstream out("old.customers.txt", ios::app);
+        std::ofstream out("old.customers.txt", std::ios::app);
         {
-            cout << "------------------------------- .CUSTOMER DETAILS. ---------------------------------" << endl<<endl;
-            cout << " Enter Customer ID: ";
-            cin >> cusID;
-            cout << " Enter Customer Name: ";
-            cin >> name;
-            cout << " Enter Customer Age: ";
-            cin >> age;
-            cout << " Enter Customer Contact: ";
-            cin >> contact;
-            cout << " Enter Customer Address: ";
-            cin >> address;
-            cout << " Enter Customer Gender: ";
-            cin >> gender;
+            std::cout << "------------------------------- .CUSTOMER DETAILS. ---------------------------------" << std::endl<<std::endl;
+            std::cout << " Enter Customer ID: ";
+            std::cin >> cusID;
+            std::cout << " Enter Customer Name: ";
+            std::cin >> name;
+            std::cout << " Enter Customer Age: ";
+            std::cin >> age;
+            std::cout << " Enter Customer Contact: ";
+            std::cin >> contact;
+            std::cout << " Enter Customer Address: ";
+            std::cin >> address;
+            std::cout << " Enter Customer Gender: ";
+            std::cin >> gender;
         }
-        out << "\nCustomer ID: " << cusID << "\nName: " << name << "\nage: " << age << "\ncontact: " << contact << "\naddress: " << address << " \ngender: " << gender << endl;
+        out << "\nCustomer ID: " << cusID << "\nName: " << name << "\nage: " << age << "\ncontact: " << contact << "\naddress: " << address << " \ngender: " << gender << std::endl;
         out.close();
-        cout << " \nSAVED \n NOTE: We save your details record for future purposes\n"<< endl;
+        std::cout << " \nSAVED \n NOTE: We save your details record for future purposes\n"<< std::endl;
     }
     void showDetails()
     {
-        ifstream in("old.customers.txt");
+        std::ifstream in("old.customers.txt");
         if (!in)
         {
-            cout << "File Error!" << endl;
+            std::cout << "File Error!" << std::endl;
         }
         else
         {
             while (in.getline(all, 999))
             {
-                cout << all << endl;
+                std::cout << all << std::endl;
             }
             in.close(); // Changed from "inf.close();" to "in.close();"
         }
@@ -94,42 +93,41 @@ public:
 
     void cabDetails()
     {
-        cout << "----------------------------------------------------------------------------------" << endl;
-        cout << "****************************** || CAB DETAILS || *********************************" << endl;
-        cout << "----------------------------------------------------------------------------------" << endl<< endl;
+        std::cout << "----------------------------------------------------------------------------------" << std::endl;
+        std::cout << "****************************** || CAB DETAILS || *********************************" << std::endl;
+        std::cout << "----------------------------------------------------------------------------------" << std::endl<< std::endl;
 
-        cout << "------------------------------- .SELECTION MENU. ---------------------------------" << endl<<endl;;
+        std::cout << "------------------------------- .SELECTION MENU. ---------------------------------" << std::endl<<std::endl;;
 
-        cout << "- We collaborated with fastest, safest, and smartest cab service around the country." << endl<< endl;
+        std::cout << "- We collaborated with fastest, safest, and smartest cab service around the country." << std::endl<< std::endl;
 
-        cout << "---------------------------------------------" << endl;
-        cout << "|| 1. Rent a Standard Cabs - Rs.15 for 1Km ||" << endl;
-        cout << "|| 2. Rent a Luxury Cabs   - Rs.25 for 1Km ||" << endl;
-        cout << "---------------------------------------------" << endl;
+        std::cout << "---------------------------------------------" << std::endl;
+        std::cout << "|| 1. Rent a Standard Cabs - Rs.15 for 1Km ||" << std::endl;
+        std::cout << "|| 2. Rent a Luxury Cabs   - Rs.25 for 1Km ||" << std::endl;
+        std::cout << "---------------------------------------------" << std::endl;
 
-        cout << "- To calculate the cost for your journey:" << endl<<endl;
-        cout << "- Enter which kind of cab you need      : ";
-        cin >> cabChoice;
-        cout << "- Enter kilometers you have to travel   : ";
-        cin >> kilometers;
+        std::cout << "- To calculate the cost for your journey:" << std::endl<<std::endl;
+        std::cout << "- Enter which kind of cab you need      : ";
+        std::cin >> cabChoice;
+        std::cout << "- Enter kilometers you have to travel   : ";
+        std::cin >> kilometers;
 
         int hireCab;
         if (cabChoice == 1)
         {
             cabCost = kilometers * 15;
-            cout<<endl;
-            cout << "\n Your tour cost " << cabCost << "ruppes for a Standard Cab" << endl<<endl;
-            cout << "Press 1 to hire cab: or ";
-            cout << "Press 2 to select another cab";
-            cin >> hireCab;
+            std::cout<<std::endl;
+            std::cout << "\n Your tour cost " << cabCost << "ruppes for a Standard Cab" << std::endl<<std::endl;
+            std::cout << "Press 1 to hire cab: or ";
+            std::cout << "Press 2 to select another cab";
+            std::cin >> hireCab;
 
-           
 
             if (hireCab == 1)
             {
                 lastcabCost = cabCost;
-                cout << " You have successfully hired Standard Cab" << endl;
-                cout << " Goto Menu and take the receipt" << endl;
+                std::cout << " You have successfully hired Standard Cab" << std::endl;
+                std::cout << " Goto Menu and take the receipt" << std::endl;
                 system("cls");
                 menu();
             }
@@ -140,7 +138,7 @@ public:
             }
             else
             {
-                cout << "Invalid Input! Redirecting to previous menu \nPlease";
+                std::cout << "Invalid Input! Redirecting to previous menu \nPlease";
                 Sleep(999);
                 system("cls");
                 menu();
@@ -150,18 +148,17 @@ public:
         {
 
             cabCost = kilometers * 25;
-            cout << " Your tour cost " << cabCost << "rupees for a Luxury Cab" << endl;
-            cout << " Press 1 to Hire Cab: or ";
-            cout << " Press 2 to Select Another cab";
-            cin >> hireCab;
+            std::cout << " Your tour cost " << cabCost << "rupees for a Luxury Cab" << std::endl;
+            std::cout << " Press 1 to Hire Cab: or ";
+            std::cout << " Press 2 to Select Another cab";
+            std::cin >> hireCab;
 
-           
 
             if (hireCab == 2)
             {
                 lastcabCost = cabCost;
-                cout << " You have successfully hired Luxury Cab" << endl;
-                cout << " Goto Menu and take the receipt" << endl;
+                std::cout << " You have successfully hired Luxury Cab" << std::endl;
+                std::cout << " Goto Menu and take the receipt" << std::endl;
                 system("cls");
                 menu();
             }
@@ -172,7 +169,7 @@ public:
             }
             else
             {
-                cout << "Invalid Input! Redirecting to previous menu \nPlease Wait";
+                std::cout << "Invalid Input! Redirecting to previous menu \nPlease Wait";
                 Sleep(1100);
                 system("cls");
                 menu();
@@ -196,74 +193,74 @@ public:
 
     void hotels()
     {
-        string hotelNo[] = {"Avendra", "EnlightInn", "GreenDesert"};
+        std::string hotelNo[] = {"Avendra", "EnlightInn", "GreenDesert"};
         for (int i = 0; i < 3; i++)
         {
-            cout << (i + 1) << ". Hotel" << hotelNo[i] << endl;
+            std::cout << (i + 1) << ". Hotel" << hotelNo[i] << std::endl;
         }
-        cout << endl<< endl;
-        cout << "- Currently we collaborated with above hotels!" << endl;
-        cout << " Press any key to back or \n Enter number of the hotel you want to book" << endl;
-        cin >> choiceHotel;
+        std::cout << std::endl<< std::endl;
+        std::cout << "- Currently we collaborated with above hotels!" << std::endl;
+        std::cout << " Press any key to back or \n Enter number of the hotel you want to book" << std::endl;
+        std::cin >> choiceHotel;
 
         system("cls");
 
         if (choiceHotel == 1)
         {
-            cout << "----------------------------------------------------------------------------------" << endl;
-            cout << "***************************** || HOTEL DETAILS || ********************************" << endl;
-            cout << "----------------------------------------------------------------------------------" << endl
-                 << endl;
+            std::cout << "----------------------------------------------------------------------------------" << std::endl;
+            std::cout << "***************************** || HOTEL DETAILS || ********************************" << std::endl;
+            std::cout << "----------------------------------------------------------------------------------" << std::endl
+                 << std::endl;
 
-            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-            cout << "!                        ______________________________                           !" << endl;
-            cout << "!                        || WELCOME TO HOTEL AVENDRA ||                           !" << endl;
-            cout << "!                                .............                                    !" << endl;
-            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl<<endl;
+            std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+            std::cout << "!                        ______________________________                           !" << std::endl;
+            std::cout << "!                        || WELCOME TO HOTEL AVENDRA ||                           !" << std::endl;
+            std::cout << "!                                .............                                    !" << std::endl;
+            std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl<<std::endl;
 
-            cout << "------------------------------- .SELECTION MENU. ----------------------------------" << endl<<endl;
+            std::cout << "------------------------------- .SELECTION MENU. ----------------------------------" << std::endl<<std::endl;
 
-            cout << " Pacakeges offered by AVENDRA:\n"
-                 << endl;
+            std::cout << " Pacakeges offered by AVENDRA:\n"
+                 << std::endl;
 
-            cout << " 1. STANDARD PACK" << endl;
-            cout << " \tAll basic facilities you need just for: Rs.10000.00" << endl;
-            cout << " 2. PREMIUM PACK" << endl;
-            cout << " \tEnjoy Premium facilities: Rs.20000.00/day" << endl;
-            cout << " 3. LUXURY PACK" << endl;
-            cout << " \tLive a Luxury at Avendra: Rs.25000/day" << endl<<endl;
+            std::cout << " 1. STANDARD PACK" << std::endl;
+            std::cout << " \tAll basic facilities you need just for: Rs.10000.00" << std::endl;
+            std::cout << " 2. PREMIUM PACK" << std::endl;
+            std::cout << " \tEnjoy Premium facilities: Rs.20000.00/day" << std::endl;
+            std::cout << " 3. LUXURY PACK" << std::endl;
+            std::cout << " \tLive a Luxury at Avendra: Rs.25000/day" << std::endl<<std::endl;
 
-            cout << "\nPress another key to back or\n Enter package number you want to book" << endl;
-            cin >> packchoice;
+            std::cout << "\nPress another key to back or\n Enter package number you want to book" << std::endl;
+            std::cin >> packchoice;
 
             if (packchoice == 1)
             {
                 hotelCost = 10000.00;
-                cout << "\n You have successfully booked standard pack at Avendra" << endl;
-                cout << " Go to Menu and take the receipt" << endl;
+                std::cout << "\n You have successfully booked standard pack at Avendra" << std::endl;
+                std::cout << " Go to Menu and take the receipt" << std::endl;
             }
             else if (packchoice == 2)
             {
                 hotelCost = 20000.00;
-                cout << " You have successfully booked premium pack at Avendra" << endl;
-                cout << " Goto Menu and take the receipt" << endl;
+                std::cout << " You have successfully booked premium pack at Avendra" << std::endl;
+                std::cout << " Goto Menu and take the receipt" << std::endl;
             }
             else if (packchoice == 3)
             {
                 hotelCost = 25000.00;
-                cout << " You have successfully booked luxury pack at Avendra" << endl;
-                cout << " Goto Menu and take the receipt" << endl;
+                std::cout << " You have successfully booked luxury pack at Avendra" << std::endl;
+                std::cout << " Goto Menu and take the receipt" << std::endl;
             }
             else
             {
-                cout << " Invalid Input! Redirecting to Previous menu\n Please Wait! " << endl;
+                std::cout << " Invalid Input! Redirecting to Previous menu\n Please Wait! " << std::endl;
                 Sleep(1100);
                 system("cls");
                 hotels();
             }
             int gotomenu;
-            cout << "Press 1 to redirect main menu:";
-            cin >> gotomenu;
+            std::cout << "Press 1 to redirect main menu:";
+            std::cin >> gotomenu;
             if (gotomenu == 1)
             {
                 system("cls");
@@ -277,60 +274,60 @@ public:
         }
         else if (choiceHotel == 2)
         {
-            cout << "----------------------------------------------------------------------------------" << endl;
-            cout << "***************************** || HOTEL DETAILS || ********************************" << endl;
-            cout << "----------------------------------------------------------------------------------" << endl
-                 << endl;
+            std::cout << "----------------------------------------------------------------------------------" << std::endl;
+            std::cout << "***************************** || HOTEL DETAILS || ********************************" << std::endl;
+            std::cout << "----------------------------------------------------------------------------------" << std::endl
+                 << std::endl;
 
-            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-            cout << "!                       _________________________________                        !" << endl;
-            cout << "!                       || WELCOME TO HOTEL EnlightINN ||                        !" << endl;
-            cout << "!                                .............                                   !" << endl;
-            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl<<endl;
+            std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+            std::cout << "!                       _________________________________                        !" << std::endl;
+            std::cout << "!                       || WELCOME TO HOTEL EnlightINN ||                        !" << std::endl;
+            std::cout << "!                                .............                                   !" << std::endl;
+            std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl<<std::endl;
 
-            cout << "------------------------------- .SELECTION MENU. ---------------------------------" << endl<<endl;
+            std::cout << "------------------------------- .SELECTION MENU. ---------------------------------" << std::endl<<std::endl;
 
-            cout << "Pacakeges offered by EnlightInn:\n"
-                 << endl;
+            std::cout << "Pacakeges offered by EnlightInn:\n"
+                 << std::endl;
 
-            cout << " 1. Standard Pack" << endl;
-            cout << " \tAll basic facilities you need just for: Rs.80000.00" << endl;
-            cout << " 2. Premium Pack" << endl;
-            cout << " \tEnjoy Premium facilities: Rs.16000.00/day" << endl;
-            cout << " 3. Luxury Pack" << endl;
-            cout << " \tLive a Luxury at Enlight Inn: Rs.21000/day" << endl<<endl;
+            std::cout << " 1. Standard Pack" << std::endl;
+            std::cout << " \tAll basic facilities you need just for: Rs.80000.00" << std::endl;
+            std::cout << " 2. Premium Pack" << std::endl;
+            std::cout << " \tEnjoy Premium facilities: Rs.16000.00/day" << std::endl;
+            std::cout << " 3. Luxury Pack" << std::endl;
+            std::cout << " \tLive a Luxury at Enlight Inn: Rs.21000/day" << std::endl<<std::endl;
 
-            cout << "\nPress another key to back or\n Enter package number you want to book" << endl;
-            cin >> packchoice;
+            std::cout << "\nPress another key to back or\n Enter package number you want to book" << std::endl;
+            std::cin >> packchoice;
 
             if (packchoice == 1)
             {
                 hotelCost = 80000.00;
-                cout << " You have successfully booked standard pack at Enlight Inn" << endl;
-                cout << " Goto Menu and take the receipt" << endl;
+                std::cout << " You have successfully booked standard pack at Enlight Inn" << std::endl;
+                std::cout << " Goto Menu and take the receipt" << std::endl;
             }
             else if (packchoice == 2)
             {
                 hotelCost = 16000.00;
-                cout << " You have successfully booked premium pack at Ehnlight Inn" << endl;
-                cout << " Goto Menu and take the receipt" << endl;
+                std::cout << " You have successfully booked premium pack at Ehnlight Inn" << std::endl;
+                std::cout << " Goto Menu and take the receipt" << std::endl;
             }
             else if (packchoice == 3)
             {
                 hotelCost = 21000.00;
-                cout << " You have successfully booked luxury pack at Enlight Inn" << endl;
-                cout << " Goto Menu and take the receipt" << endl;
+                std::cout << " You have successfully booked luxury pack at Enlight Inn" << std::endl;
+                std::cout << " Goto Menu and take the receipt" << std::endl;
             }
             else
             {
-                cout << " Invalid Input! Redirecting to Previous menu\n Please Wait! " << endl;
+                std::cout << " Invalid Input! Redirecting to Previous menu\n Please Wait! " << std::endl;
                 Sleep(1100);
                 system("cls");
                 hotels();
             }
             int gotomenu;
-            cout << "Press 1 to redirect main menu:";
-            cin >> gotomenu;
+            std::cout << "Press 1 to redirect main menu:";
+            std::cin >> gotomenu;
             if (gotomenu == 1)
             {
                 system("cls");
@@ -344,60 +341,60 @@ public:
         }
         else if (choiceHotel == 3)
         {
-            cout << "----------------------------------------------------------------------------------" << endl;
-            cout << "***************************** || HOTEL DETAILS || ********************************" << endl;
-            cout << "----------------------------------------------------------------------------------" << endl
-                 << endl;
+            std::cout << "----------------------------------------------------------------------------------" << std::endl;
+            std::cout << "***************************** || HOTEL DETAILS || ********************************" << std::endl;
+            std::cout << "----------------------------------------------------------------------------------" << std::endl
+                 << std::endl;
 
-            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-            cout << "!                       __________________________________                       !" << endl;
-            cout << "!                       || WELCOME TO HOTEL GreenDesert ||                       !" << endl;
-            cout << "!                                .............                                   !" << endl;
-            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl<<endl;
+            std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+            std::cout << "!                       __________________________________                       !" << std::endl;
+            std::cout << "!                       || WELCOME TO HOTEL GreenDesert ||                       !" << std::endl;
+            std::cout << "!                                .............                                   !" << std::endl;
+            std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl<<std::endl;
 
-            cout << "------------------------------- .SELECTION MENU. ---------------------------------" << endl<<endl;
+            std::cout << "------------------------------- .SELECTION MENU. ---------------------------------" << std::endl<<std::endl;
 
-            cout << "Pacakeges offered by GreenDesert:\n"
-                 << endl;
+            std::cout << "Pacakeges offered by GreenDesert:\n"
+                 << std::endl;
 
-            cout << " 1. Standard Pack" << endl;
-            cout << " \tAll basic facilities you need just for: Rs.15000.00" << endl;
-            cout << " 2. Premium Pack" << endl;
-            cout << " \tEnjoy Premium facilities: Rs.25000.00/day" << endl;
-            cout << " 3. Luxury Pack" << endl;
-            cout << " \tLive a Luxury at GreenDesert: Rs.35000/day" << endl;
+            std::cout << " 1. Standard Pack" << std::endl;
+            std::cout << " \tAll basic facilities you need just for: Rs.15000.00" << std::endl;
+            std::cout << " 2. Premium Pack" << std::endl;
+            std::cout << " \tEnjoy Premium facilities: Rs.25000.00/day" << std::endl;
+            std::cout << " 3. Luxury Pack" << std::endl;
+            std::cout << " \tLive a Luxury at GreenDesert: Rs.35000/day" << std::endl;
 
-            cout << "\nPress another key to back or\n Enter package number you want to book" << endl;
-            cin >> packchoice;
+            std::cout << "\nPress another key to back or\n Enter package number you want to book" << std::endl;
+            std::cin >> packchoice;
 
             if (packchoice == 1)
             {
                 hotelCost = 15000.00;
-                cout << " You have successfully booked standard pack at GreenDesert" << endl;
-                cout << " Goto Menu and take the receipt" << endl;
+                std::cout << " You have successfully booked standard pack at GreenDesert" << std::endl;
+                std::cout << " Goto Menu and take the receipt" << std::endl;
             }
             else if (packchoice == 2)
             {
                 hotelCost = 25000.00;
-                cout << " You have successfully booked premium pack at GreenDesert" << endl;
-                cout << " Goto Menu and take the receipt" << endl;
+                std::cout << " You have successfully booked premium pack at GreenDesert" << std::endl;
+                std::cout << " Goto Menu and take the receipt" << std::endl;
             }
             else if (packchoice == 3)
             {
                 hotelCost = 25000.00;
-                cout << " You have successfully booked luxury pack at GreenDesert" << endl;
-                cout << " Goto Menu and take the receipt" << endl;
+                std::cout << " You have successfully booked luxury pack at GreenDesert" << std::endl;
+                std::cout << " Goto Menu and take the receipt" << std::endl;
             }
             else
             {
-                cout << " Invalid Input! Redirecting to Previous menu\n Please Wait! " << endl;
+                std::cout << " Invalid Input! Redirecting to Previous menu\n Please Wait! " << std::endl;
                 Sleep(1100);
                 system("cls");
                 hotels();
             }
             int gotomenu;
-            cout << "Press 1 to redirect main menu:";
-            cin >> gotomenu;
+            std::cout << "Press 1 to redirect main menu:";
+            std::cin >> gotomenu;
             if (gotomenu == 1)
             {
                 system("cls");
@@ -411,7 +408,7 @@ public:
         }
         else
         {
-            cout << " Invalid Input! Redirecting to Previous menu\n Please Wait! " << endl;
+            std::cout << " Invalid Input! Redirecting to Previous menu\n Please Wait! " << std::endl;
             Sleep(1100);
             system("cls");
             menu();
@@ -425,43 +422,43 @@ class Charges : public Booking, Cabs, Customers // USED multilevel inheritence
 public:
     void printBill()
     {
-        ofstream outf("receipt.txt");
+        std::ofstream outf("receipt.txt");
         {
-            outf << "----------------------------------------------------------------------------------" << endl;
-            outf << "***************************  || ABC TRAVEL AGENCY || *****************************" << endl;
-            outf << "----------------------------------------------------------------------------------" << endl
-                 << endl;
+            outf << "----------------------------------------------------------------------------------" << std::endl;
+            outf << "***************************  || ABC TRAVEL AGENCY || *****************************" << std::endl;
+            outf << "----------------------------------------------------------------------------------" << std::endl
+                 << std::endl;
 
-            outf << "!                        _______________________________                         !" << endl;
-            outf << "!                        ||********  RECEIPT  ********||                         !" << endl;
-            outf << "----------------------------------------------------------------------------------" << endl
-                 << endl;
-            outf << "__________________________________________________________________________________" << endl;
-            outf << "Customer ID: " << Customers::cusID << endl
-                 << endl;
-            outf << "Description\t\t Total" << endl;
-            outf << "Hotel cost:\t\t " << fixed << setprecision(2) << Booking::hotelCost << endl;
-            outf << "Travel (cab) cost:\t " << fixed << setprecision(2) << Cabs::lastcabCost << endl;
+            outf << "!                        _______________________________                         !" << std::endl;
+            outf << "!                        ||********  RECEIPT  ********||                         !" << std::endl;
+            outf << "----------------------------------------------------------------------------------" << std::endl
+                 << std::endl;
+            outf << "__________________________________________________________________________________" << std::endl;
+            outf << "Customer ID: " << Customers::cusID << std::endl
+                 << std::endl;
+            outf << "Description\t\t Total" << std::endl;
+            outf << "Hotel cost:\t\t " << std::fixed << std::setprecision(2) << Booking::hotelCost << std::endl;
+            outf << "Travel (cab) cost:\t " <<std::fixed << std::setprecision(2) << Cabs::lastcabCost << std::endl;
 
-            outf << "__________________________________" << endl;
-            outf << "Total Charge:\t\t" << fixed << setprecision(2) << Booking::hotelCost + Cabs::lastcabCost << endl;
-            outf << "__________________________________" << endl;
-            outf << "------------THANK YOU-------------" << endl;
+            outf << "__________________________________" << std::endl;
+            outf << "Total Charge:\t\t" << std::fixed << std::setprecision(2) << Booking::hotelCost + Cabs::lastcabCost << std::endl;
+            outf << "__________________________________" << std::endl;
+            outf << "------------THANK YOU-------------" << std::endl;
         }
         outf.close();
     }
     void showbill()
     {
-        ifstream inf("receipt.txt");
+        std::ifstream inf("receipt.txt");
         {
             if (!inf)
             {
-                cout << " File opening error!" << endl;
+                std::cout << " File opening error!" << std::endl;
             }
             while (!(inf.eof()))
             {
                 inf.getline(all, 999);
-                cout << all << endl;
+                std::cout << all << std::endl;
             }
         }
         inf.close();
@@ -474,23 +471,23 @@ void menu() // CORE FUNCTION
     int Choice;
     int gotomenu;
 
-    cout << endl;
-    cout << "----------------------------------------------------------------------------------" << endl;
-    cout << "***************************** || ABC TRAVEL AGENCY || ****************************" << endl;
-    cout << "----------------------------------------------------------------------------------" << endl<< endl;
-    cout << ".................................  || WELCOME ||  ................................" << endl<<endl;
-    cout << "----------------------------------- .MAIN MENU. ----------------------------------" << endl<<endl;
-    cout << "" << endl;
-    cout << "| Customer Management -> 1\t|" << endl;
-    cout << "| Cabs Management     -> 2\t|" << endl;
-    cout << "| Booking Management  -> 3\t|" << endl;
-    cout << "| Charges Management  -> 4\t|" << endl;
-    cout << "| Exit                -> 5\t|" << endl
-         << endl;
-    cout << ".............................................." << endl;
+    std::cout << std::endl;
+    std::cout << "----------------------------------------------------------------------------------" << std::endl;
+    std::cout << "***************************** || ABC TRAVEL AGENCY || ****************************" << std::endl;
+    std::cout << "----------------------------------------------------------------------------------" << std::endl<< std::endl;
+    std::cout << ".................................  || WELCOME ||  ................................" << std::endl<<std::endl;
+    std::cout << "----------------------------------- .MAIN MENU. ----------------------------------" << std::endl<<std::endl;
+    std::cout << "" << std::endl;
+    std::cout << "| Customer Management -> 1\t|" << std::endl;
+    std::cout << "| Cabs Management     -> 2\t|" << std::endl;
+    std::cout << "| Booking Management  -> 3\t|" << std::endl;
+    std::cout << "| Charges Management  -> 4\t|" << std::endl;
+    std::cout << "| Exit                -> 5\t|" << std::endl
+         << std::endl;
+    std::cout << ".............................................." << std::endl;
 
-    cout << "\nEnter Your Choice: ";
-    cin >> mainChoice;
+    std::cout << "\nEnter Your Choice: ";
+    std::cin >> mainChoice;
 
     system("cls");
 
@@ -501,18 +498,18 @@ void menu() // CORE FUNCTION
 
     if (mainChoice == 1)
     {
-        cout << endl;
-        cout << "----------------------------------------------------------------------------------" << endl;
-        cout << "***************************** || ABC TRAVEL AGENCY || ****************************" << endl;
-        cout << "----------------------------------------------------------------------------------" << endl<<endl;
-        cout << "------------------------------- .CUSTOMER SECTION. -------------------------------" << endl<<endl;
-        cout<<  "-----------------------------------"<<endl;
-        cout << "|| 1. Enter New Customer" << endl;
-        cout << "|| 2. See Old Customers" << endl;
-        cout<<  "-----------------------------------"<<endl;
+        std::cout << std::endl;
+        std::cout << "----------------------------------------------------------------------------------" << std::endl;
+        std::cout << "***************************** || ABC TRAVEL AGENCY || ****************************" << std::endl;
+        std::cout << "----------------------------------------------------------------------------------" << std::endl<<std::endl;
+        std::cout << "------------------------------- .CUSTOMER SECTION. -------------------------------" << std::endl<<std::endl;
+        std::cout<<  "-----------------------------------"<<std::endl;
+        std::cout << "|| 1. Enter New Customer" << std::endl;
+        std::cout << "|| 2. See Old Customers" << std::endl;
+        std::cout<<  "-----------------------------------"<<std::endl;
 
-        cout << "\nEnter Choice: ";
-        cin >> Choice;
+        std::cout << "\nEnter Choice: ";
+        std::cin >> Choice;
 
         system("cls");
         if (Choice == 1)
@@ -526,13 +523,13 @@ void menu() // CORE FUNCTION
         }
         else
         {
-            cout << "Invalid Input! Redirecting to previous menu \nPlease Wait";
+            std::cout << "Invalid Input! Redirecting to previous menu \nPlease Wait";
             Sleep(1100);
             system("cls");
             menu();
         }
-        cout << "\nPress 1 to redirect main menu: ";
-        cin >> gotomenu;
+        std::cout << "\nPress 1 to redirect main menu: ";
+        std::cin >> gotomenu;
         system("cls");
         if (gotomenu == 1)
         {
@@ -555,38 +552,38 @@ void menu() // CORE FUNCTION
         {
             menu();
         }
-        
+
     }
     else if (mainChoice == 3)
     {
-        cout << endl;
-        cout << "----------------------------------------------------------------------------------" << endl;
-        cout << "***************************** || ABC TRAVEL AGENCY || ****************************" << endl;
-        cout << "----------------------------------------------------------------------------------" << endl<<endl;
-        cout << "--------------------------------- .HOTEL SECTION. --------------------------------" << endl<<endl;
-        cout << "---< Book a Luxury Hotel using the system >---" << endl;
-        cout << endl<< endl;
+        std::cout << std::endl;
+        std::cout << "----------------------------------------------------------------------------------" << std::endl;
+        std::cout << "***************************** || ABC TRAVEL AGENCY || ****************************" << std::endl;
+        std::cout << "----------------------------------------------------------------------------------" << std::endl<<std::endl;
+        std::cout << "--------------------------------- .HOTEL SECTION. --------------------------------" << std::endl<<std::endl;
+        std::cout << "---< Book a Luxury Hotel using the system >---" << std::endl;
+        std::cout << std::endl<< std::endl;
         a4.hotels();
     }
     else if (mainChoice == 4)
     {
-        cout << endl;
-        cout << "----------------------------------------------------------------------------------" << endl;
-        cout << "***************************** || ABC TRAVEL AGENCY || ****************************" << endl;
-        cout << "----------------------------------------------------------------------------------" << endl<<endl;
-        cout << "----< GET YOUR RECEIPT >----" << endl;
+        std::cout << std::endl;
+        std::cout << "----------------------------------------------------------------------------------" << std::endl;
+        std::cout << "***************************** || ABC TRAVEL AGENCY || ****************************" << std::endl;
+        std::cout << "----------------------------------------------------------------------------------" << std::endl<<std::endl;
+        std::cout << "----< GET YOUR RECEIPT >----" << std::endl;
         a5.printBill();
-        cout<<endl;
-        cout << "Your receipt is already printed you can get it from file path\n"<< endl;
-        cout << "to diplay your receipt in the screen, Enter 1: or Enter another key to back main menu:";
-        cin >> gotomenu;
+        std::cout<<std::endl;
+        std::cout << "Your receipt is already printed you can get it from file path\n"<< std::endl;
+        std::cout << "to diplay your receipt in the screen, Enter 1: or Enter another key to back main menu:";
+        std::cin >> gotomenu;
 
         if (gotomenu == 1)
         {
             system("cls");
             a5.showbill();
-            cout << "\n Press 1 to redirect main menu:";
-            cin >> gotomenu;
+            std::cout << "\n Press 1 to redirect main menu:";
+            std::cin >> gotomenu;
             if (gotomenu == 1)
             {
                 system("cls");
@@ -606,19 +603,19 @@ void menu() // CORE FUNCTION
     }
     else if (mainChoice == 5)
     {
-        cout << endl;
-        cout << "----------------------------------------------------------------------------------" << endl;
-        cout << "***************************** || ABC TRAVEL AGENCY || ****************************" << endl;
-        cout << "----------------------------------------------------------------------------------" << endl<<endl;
-        cout << ":::::::::::::::::::::::::::::::::::: Good BYE ::::::::::::::::::::::::::::::::::::";
-        
+        std::cout << std::endl;
+        std::cout << "----------------------------------------------------------------------------------" << std::endl;
+        std::cout << "***************************** || ABC TRAVEL AGENCY || ****************************" << std::endl;
+        std::cout << "----------------------------------------------------------------------------------" << std::endl<<std::endl;
+        std::cout << ":::::::::::::::::::::::::::::::::::: Good BYE ::::::::::::::::::::::::::::::::::::";
+
         Sleep(999);
         system("cls");
         menu();
     }
     else
     {
-        cout << " Invalid Input! Redirecting to Previous menu\n Please Wait! " << endl;
+        std::cout << " Invalid Input! Redirecting to Previous menu\n Please Wait! " << std::endl;
         Sleep(1100);
         system("cls");
         menu();
@@ -630,4 +627,5 @@ int main() // MAIN FUNCTION
     manageMenu startObj;
     return 0;
 }
+
 
